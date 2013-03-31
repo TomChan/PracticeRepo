@@ -25,11 +25,11 @@ function startPush() {
 <script>
 
 JSONLogin = function() {
-var data = {USERNAME:"tm_cvx", PASSWORD:"abc"};
+var data = {username:"tm_cvx", password:"abc"};
 var dataS = JSON.stringify(data);
 var response;
 $.ajax({
-        url:"http://localhost:8089/login",
+        url:"http://localhost:8089/login?api_key=05A4A7F0-887E-11E2-9E96-0800200C9A66",
         type:"POST",
 	applicationType:"json",
         data:dataS,       //using dataType String
@@ -44,11 +44,11 @@ $('textArea#resArea').val(JSON.stringify(response));
 
 
 JSONValidate = function() {
-var data = {API_KEY:"05A4A7F0-887E-11E2-9E96-0800200C9A66"};
+var data = {api_key:"05A4A7F0-887E-11E2-9E96-0800200C9A66"};
 var dataS = JSON.stringify(data);
 var response;
 $.ajax({
-        url:"http://localhost:8089/validate_api_key",
+        url:"http://localhost:8089/validate_api_key?api_key=05A4A7F0-887E-11E2-9E96-0800200C9A66",
         type:"POST",
 	applicationType:"json",
         data:dataS,       //using dataType String
@@ -64,11 +64,11 @@ $('textArea#resArea').val(JSON.stringify(response));
 
 
 JSONRequest = function() {
-var data = {LAST_PID:"SAMPLE_PID", SIZE:5};
+var data = {last_pid:"sample_pid", size:5};
 var dataS = JSON.stringify(data);
 var response;
 $.ajax({
-        url:"http://localhost:8089/request_print_jobs",
+        url:"http://localhost:8089/request_print_jobs?api_key=05A4A7F0-887E-11E2-9E96-0800200C9A66",
         type:"POST",
 	applicationType:"json",
         data:dataS,       //using dataType String
@@ -84,11 +84,11 @@ $('textArea#resArea').val(JSON.stringify(response));
 
 
 JSONAmend = function() {
-var data = {PID:"TEST_PID_1", PRINTER_ID:2, COPIES:2, PAGES_PER_SHEET:4, ORIENTATION:0};
+var data = {pid:"test_pid_1", printer_id:2, copies:2, pages_per_sheet:4, orientation:0};
 var dataS = JSON.stringify(data);
 var response;
 $.ajax({
-        url:"http://localhost:8089/amend_print_job",
+        url:"http://localhost:8089/amend_print_job?api_key=05A4A7F0-887E-11E2-9E96-0800200C9A66",
         type:"POST",
 	applicationType:"json",
         data:dataS,       //using dataType String
@@ -104,11 +104,11 @@ $('textArea#resArea').val(JSON.stringify(response));
 
 
 JSONDelete = function() {
-var data = {PID:"TEST_PID_1"};
+var data = {pid:"TEST_PID_1"};
 var dataS = JSON.stringify(data);
 var response;
 $.ajax({
-        url:"http://localhost:8089/delete_print_job",
+        url:"http://localhost:8089/delete_print_job?api_key=05A4A7F0-887E-11E2-9E96-0800200C9A66",
         type:"POST",
 	applicationType:"json",
         data:dataS,       //using dataType String
@@ -124,11 +124,11 @@ $('textArea#resArea').val(JSON.stringify(response));
 
 
 JSONLaunch = function() {
-var data = {PID:"TEST_PID_2"};
+var data = {pid:"TEST_PID_2"};
 var dataS = JSON.stringify(data);
 var response;
 $.ajax({
-        url:"http://localhost:8089/launch_print_job",
+        url:"http://localhost:8089/launch_print_job?api_key=05A4A7F0-887E-11E2-9E96-0800200C9A66",
         type:"POST",
 	applicationType:"json",
         data:dataS,       //using dataType String
