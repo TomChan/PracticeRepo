@@ -1,0 +1,5 @@
+1. Install mongoDB using the install.sh
+2. Insert the records in DB by
+	mongo insert.js
+3. Delete the inserted records in DB by
+	mongo delete.js
