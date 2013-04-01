@@ -1,0 +1,176 @@
+<html>
+<head>Testing Node</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script src="http://localhost:8090/socket.io/socket.io.js"></script>
+
+<script>
+ var socket; 
+function startPush() {
+ if ( !socket) {
+  socket = io.connect('http://localhost:8090');
+  socket.on('PUSH_PRINT_JOB_STATUS', function (data) {
+	$('textArea#resAreaPush').val(JSON.stringify(data));
+  });
+  socket.on('disconnect', function (data) {
+	$('textArea#resAreaPush').val(JSON.stringify(data));
+  });
+  }
+  else {
+	socket.socket.reconnect();
+	}
+}
+</script>
+
+<script>
+
+JSONLogin = function() {
+var data = {USERNAME:"tm_cvx", PASSWORD:"abc"};
+var dataS = JSON.stringify(data);
+var response;
+$.ajax({
+        url:"http://localhost:8089/login",
+        type:"POST",
+	applicationType:"json",
+        data:dataS,       //using dataType String
+	async: false,
+        success:function (res)
+        {
+             response = res
+        }
+});
+$('textArea#resArea').val(JSON.stringify(response));
+};
+
+
+JSONValidate = function() {
+var data = {API_KEY:"05A4A7F0-887E-11E2-9E96-0800200C9A66"};
+var dataS = JSON.stringify(data);
+var response;
+$.ajax({
+        url:"http://localhost:8089/validate_api_key",
+        type:"POST",
+	applicationType:"json",
+        data:dataS,       //using dataType String
+	async: false,
+        success:function (res)
+        {
+             response = res
+        }
+});
+$('textArea#resArea').val(JSON.stringify(response));
+
+};
+
+
+JSONRequest = function() {
+var data = {LAST_PID:"SAMPLE_PID", SIZE:5};
+var dataS = JSON.stringify(data);
+var response;
+$.ajax({
+        url:"http://localhost:8089/request_print_jobs",
+        type:"POST",
+	applicationType:"json",
+        data:dataS,       //using dataType String
+	async: false,
+        success:function (res)
+        {
+             response = res
+        }
+});
+$('textArea#resArea').val(JSON.stringify(response));
+
+};
+
+
+JSONAmend = function() {
+var data = {PID:"TEST_PID_1", PRINTER_ID:2, COPIES:2, PAGES_PER_SHEET:4, ORIENTATION:0};
+var dataS = JSON.stringify(data);
+var response;
+$.ajax({
+        url:"http://localhost:8089/amend_print_job",
+        type:"POST",
+	applicationType:"json",
+        data:dataS,       //using dataType String
+	async: false,
+        success:function (res)
+        {
+             response = res
+        }
+});
+$('textArea#resArea').val(JSON.stringify(response));
+
+};
+
+
+JSONDelete = function() {
+var data = {PID:"TEST_PID_1"};
+var dataS = JSON.stringify(data);
+var response;
+$.ajax({
+        url:"http://localhost:8089/delete_print_job",
+        type:"POST",
+	applicationType:"json",
+        data:dataS,       //using dataType String
+	async: false,
+        success:function (res)
+        {
+             response = res
+        }
+});
+$('textArea#resArea').val(JSON.stringify(response));
+
+};
+
+
+JSONLaunch = function() {
+var data = {PID:"TEST_PID_2"};
+var dataS = JSON.stringify(data);
+var response;
+$.ajax({
+        url:"http://localhost:8089/launch_print_job",
+        type:"POST",
+	applicationType:"json",
+        data:dataS,       //using dataType String
+	async: false,
+        success:function (res)
+        {
+             response = res
+        }
+});
+$('textArea#resArea').val(JSON.stringify(response));
+
+};
+</script>
+
+<body>
+Testing Node <br>
+
+<!--Path: <input type="text" name="path"> <br>
+Name: <input type="text" name="name"> <br>
+Value: <input type="text" name="value"> <br>-->
+
+
+<button onclick="JSONLogin()">Login</button>
+
+<button onclick="JSONValidate()">Validate API Key</button>
+
+<button onclick="JSONRequest()">Request Print Jobs</button>
+
+<button onclick="JSONAmend()">Amend Print Job</button>
+
+<button onclick="JSONDelete()">Delete Print Job</button>
+
+<button onclick="JSONLaunch()">Launch Print Job</button>
+
+<button onclick="startPush()">Start Push</button>
+
+<textarea id="resArea" cols="100">
+</textarea>
+
+<textarea id="resAreaPush" cols="100">
+</textarea>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<html>
+<head>Testing Node</head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data', my2: 'data2' });
+  });
+</script>
+
+<body>
+Testing Node
+</body>
+
+</html>
